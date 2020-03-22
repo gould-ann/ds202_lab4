@@ -1,0 +1,52 @@
+---
+title: "Lab 4"
+author: "Ann Gould and Henry Underhill"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Libraries
+
+```{r}
+library(readxl)
+library(tidyverse)
+library(dplyr)
+```
+
+
+# Loading Data
+
+```{r}
+defense <- read_excel('cyclonesFootball2019.xlsx', sheet='Defensive')
+biography <- read_excel('cyclonesFootball2019.xlsx', sheet='Biography')
+offensive <- read_excel('cyclonesFootball2019.xlsx', sheet='Offensive')
+str(defense)
+```
+
+# Cleaning Data
+
+```{r}
+defense$Name <- as.factor(defense$Name) # 1
+defClean <- defense
+biography$Name <- as.factor(biography$Name) # 1
+
+biography$Weight <- as.numeric(biography$Weight) # 2
+bioClean = biography %>% separate(Height, c("Ft", "In"))
+
+
+offensive$Name <- as.factor(offensive$Name) 
+offClean <- offensive
+
+
+
+
+# defense
+biography
+
+```
+
+```{r}
+print(defense)
+```
+
